@@ -1,0 +1,13 @@
+{
+  "extends": [],
+  "rules": {
+    "complexity": [
+      "error",
+      {
+        "max": 15
+      }
+    ],
+    "import/no-anonymous-default-export": "off",
+    "prefer-const": "error"
+  }
+}

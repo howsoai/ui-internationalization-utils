@@ -1,0 +1,39 @@
+name: Build
+run-name: "Branch Build (${{ github.run_attempt }}.${{ github.run_number }}) - ${{ github.ref_name }}"
+
+on:
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      build-type:
+        required: false
+        type: string
+      optional-release-tag:
+        required: false
+        type: string
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  metadata:
+    uses: howsoai/.github/.github/workflows/set-metadata.yml@main
+    secrets: inherit
+    with:
+      build-type: ${{ inputs.build-type }}
+      optional-release-tag: ${{ inputs.optional-release-tag }}
+
+  npm-test:
+    uses: howsoai/.github/.github/workflows/npm-test.yml@main
+    secrets: inherit
+
+  release:
+    needs:
+      - metadata
+      - npm-test
+    if: inputs.build-type == 'release'
+    uses: howsoai/.github/.github/workflows/npm-release.yml@main
+    secrets: inherit
+    with:
+      version: ${{ needs.metadata.outputs.version }}

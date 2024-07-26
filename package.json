@@ -1,0 +1,68 @@
+{
+  "name": "@howso/ui-internationalization-utils",
+  "version": "0.0.0",
+  "description": "A set of functions and types to support our translation efforts",
+  "type": "module",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.esm.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "rollup --config",
+    "lint": "tsc --noEmit && eslint --ext .js,.jsx,.ts,.tsx src/ --color",
+    "prebuild": "rimraf lib/*",
+    "pre-commit": "lint-staged",
+    "prepare": "husky install",
+    "test": "jest && npm run lint",
+    "test:watch": "jest --watch",
+    "test:coverage": "tsc --noEmit && jest --collect-coverage",
+    "prepack": "npm run build"
+  },
+  "publishConfig": {
+    "registry": "https://dpbuild.jfrog.io/artifactory/api/npm/npm-edge/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/howsoai/ui-internationalization-utils"
+  },
+  "contributors": [
+    "Lance Gliser <lance.gliser@howso.com>"
+  ],
+  "license": "ISC",
+  "files": [
+    "lib"
+  ],
+  "peerDependencies": {
+    "react-i18next": "^14.1.2",
+    "tslib": "^2.0.3"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.9.6"
+  },
+  "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@types/react": "^18.2.14",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.5.0",
+    "husky": "^7.0.4",
+    "jest": "^29.6.1",
+    "jest-environment-jsdom": "^29.6.1",
+    "jest-transform-stub": "^2.0.0",
+    "lint-staged": "^11.2.3",
+    "prettier": "^3.3.3",
+    "react-i18next": "^14.1.2",
+    "rollup": "^4.12.1",
+    "ts-jest": "^29.1.1",
+    "tslib": "^2.0.3",
+    "typescript": "^5.5.2",
+    "vite": "^5.1.6",
+    "vite-plugin-eslint": "^1.8.1"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ]
+  }
+}
