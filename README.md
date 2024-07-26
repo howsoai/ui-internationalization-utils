@@ -20,7 +20,7 @@ Your home directory must contain a `.npmrc` file pointing to the Azure DevOps ar
 Standard package installation makes imports available:
 
 ```bash
-npm i @howso/react-tailwind-flowbite-components
+npm i --save-dev @howso/ui-internationalization-utils
 ```
 
 ### Creating Bundles
@@ -51,6 +51,7 @@ const es: Resource = {};
 You can create the `Il8nBundle`'s `strings` property for use in `t()` using a utility function:
 
 ```ts
+import { getStringsForIl8nBundleFromResource } from "@howso/ui-internationalization-utils";
 const strings = getStringsForIl8nBundleFromResource<Resource>(en);
 ```
 
@@ -70,7 +71,9 @@ const Component: FC = () => {
 Creating a full bundle with multiple languages:
 
 ```ts
+import { Il8nBundle } from "@howso/ui-internationalization-utils";
 import { Languages } from "@/constants";
+
 export const componentBundle: Il8nBundle<Resource, Languages> = {
   namespace,
   resources: { en, fr, es },
