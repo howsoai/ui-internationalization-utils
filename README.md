@@ -74,7 +74,7 @@ Creating a full bundle with multiple languages:
 import { Il8nBundle } from "@howso/ui-internationalization-utils";
 import { Languages } from "@/constants";
 
-export const componentBundle: Il8nBundle<Resource, Languages> = {
+export const componentBundle: Il8nBundle<Languages, Resource> = {
   namespace,
   resources: { en, fr, es },
   strings: getStringsForIl8nBundleFromResource<Resource>(en),
