@@ -1,1 +1,1 @@
-export const a = "b";
+export * from "./Il8nBundle";
