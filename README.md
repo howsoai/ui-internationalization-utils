@@ -83,7 +83,30 @@ export const componentBundle: Il8nBundle<Languages, Resource> = {
 
 ### Installing bundles
 
-TODO...
+You may use standard index bundling techniques to export bundling:
+
+```ts
+export * from "./ComponentA.il8n";
+export * from "./ComponentB.il8n";
+```
+
+The final set of bundles can be installed into your `i18n` service:
+
+```ts
+import i18n from "i18next";
+import * as ComponentsIl8nBundles from "./components/il8n";
+import * as PagesIl8nBundles from "./pages/il8n";
+
+i18n
+  // ...
+  .init({
+    resources: addIl8nBundlesToResources(resources, [
+      ...Object.values(ComponentsIl8nBundles),
+      ...Object.values(PagesIl8nBundles),
+    ]),
+    // ...
+  });
+```
 
 ## Publishing
 
