@@ -1,12 +1,12 @@
 import type { Resource } from "i18next";
 import {
-  addIl8nBundlesToResources,
-  getStringsForIl8nBundleFromResource,
-  Il8nBundle,
+  addI18nBundlesToResources,
+  getStringsForI18nBundleFromResource,
+  I18nBundle,
 } from ".";
 
-describe("Il8nBundle", () => {
-  describe("getStringsForIl8nBundleFromResource", () => {
+describe("I18nBundle", () => {
+  describe("getStringsForI18nBundleFromResource", () => {
     it("should return strings in nested shape matching the resource", () => {
       const en = {
         title: "",
@@ -17,7 +17,7 @@ describe("Il8nBundle", () => {
       };
       type Resource = typeof en;
 
-      const strings = getStringsForIl8nBundleFromResource<Resource>(en);
+      const strings = getStringsForI18nBundleFromResource<Resource>(en);
 
       expect(strings).toStrictEqual({
         title: "title",
@@ -35,7 +35,7 @@ describe("Il8nBundle", () => {
     });
   });
 
-  describe("addIl8nBundlesToResources", () => {
+  describe("addI18nBundlesToResources", () => {
     type Languages = "en" | "es";
     const languages: Languages[] = ["en", "es"];
 
@@ -47,15 +47,15 @@ describe("Il8nBundle", () => {
     type ComponentResource = typeof en;
     const es: ComponentResource = { ...en };
 
-    const bundle: Il8nBundle<Languages, ComponentResource> = {
+    const bundle: I18nBundle<Languages, ComponentResource> = {
       namespace,
       resources: { en, es },
-      strings: getStringsForIl8nBundleFromResource<ComponentResource>(en),
+      strings: getStringsForI18nBundleFromResource<ComponentResource>(en),
     };
 
     it("should return a resources object with our new bundles added for all supported languages", () => {
       const resources: Resource = {};
-      const newResources = addIl8nBundlesToResources(resources, [bundle]);
+      const newResources = addI18nBundlesToResources(resources, [bundle]);
       console.info(newResources);
       languages.forEach((language) => {
         expect(newResources[language][namespace]).toStrictEqual(en);
@@ -72,7 +72,7 @@ describe("Il8nBundle", () => {
       };
 
       const add = () => {
-        addIl8nBundlesToResources(resources, [bundle]);
+        addI18nBundlesToResources(resources, [bundle]);
       };
       expect(add).toThrow(new RegExp(namespace));
     });
