@@ -1,6 +1,6 @@
 import type { Resource, ResourceLanguage } from "i18next";
 
-export type Il8nBundle<
+export type I18nBundle<
   Languages extends string,
   Resource extends ResourceLanguage,
 > = {
@@ -17,7 +17,7 @@ type ResourceObject = {
 /**
  * Returns strings for accessing translations dynamically based on a given language resource
  */
-export const getStringsForIl8nBundleFromResource = <T extends ResourceObject>(
+export const getStringsForI18nBundleFromResource = <T extends ResourceObject>(
   resource: T,
 ): T => {
   const buildStrings = (
@@ -45,9 +45,9 @@ export const getStringsForIl8nBundleFromResource = <T extends ResourceObject>(
  * Takes an existing i18next resource object and adds bundles.
  * An error will be thrown if a namespace collisions occur.
  */
-export const addIl8nBundlesToResources = (
+export const addI18nBundlesToResources = (
   resources: Resource,
-  bundles: Il8nBundle<any, ResourceLanguage>[],
+  bundles: I18nBundle<any, ResourceLanguage>[],
 ): Resource => {
   const newResources = { ...resources };
 

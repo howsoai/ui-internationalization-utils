@@ -25,9 +25,9 @@ npm i --save-dev @howso/ui-internationalization-utils
 
 ### Creating Bundles
 
-**All bundles should be created in `.il8n` files collocated with your code. They are often separately than component code itself**
+**All bundles should be created in `.i18n` files collocated with your code. They are often separately than component code itself**
 
-Every component that includes unique translations should produce an `Il8nBundle` by
+Every component that includes unique translations should produce an `I18nBundle` by
 creating a object of initial translations:
 
 ```ts
@@ -48,11 +48,11 @@ const fr: Resource = {};
 const es: Resource = {};
 ```
 
-You can create the `Il8nBundle`'s `strings` property for use in `t()` using a utility function:
+You can create the `I18nBundle`'s `strings` property for use in `t()` using a utility function:
 
 ```ts
-import { getStringsForIl8nBundleFromResource } from "@howso/ui-internationalization-utils";
-const strings = getStringsForIl8nBundleFromResource<Resource>(en);
+import { getStringsForI18nBundleFromResource } from "@howso/ui-internationalization-utils";
+const strings = getStringsForI18nBundleFromResource<Resource>(en);
 ```
 
 Your translation function strings can then access your strongly typed bundle in this fashion:
@@ -60,7 +60,7 @@ Your translation function strings can then access your strongly typed bundle in 
 ```tsx
 import type { FC } from "react";
 import { useTranslation } from "react-i18next";
-import bundle from "./Component.il8n.ts";
+import bundle from "./Component.i18n.ts";
 
 const Component: FC = () => {
     const { t } = useTranslation(bundle.namespace);
@@ -71,13 +71,13 @@ const Component: FC = () => {
 Creating a full bundle with multiple languages:
 
 ```ts
-import { Il8nBundle } from "@howso/ui-internationalization-utils";
+import { I18nBundle } from "@howso/ui-internationalization-utils";
 import { Languages } from "@/constants";
 
-export const componentBundle: Il8nBundle<Languages, Resource> = {
+export const componentBundle: I18nBundle<Languages, Resource> = {
   namespace,
   resources: { en, fr, es },
-  strings: getStringsForIl8nBundleFromResource<Resource>(en),
+  strings: getStringsForI18nBundleFromResource<Resource>(en),
 };
 ```
 
@@ -86,23 +86,23 @@ export const componentBundle: Il8nBundle<Languages, Resource> = {
 You may use standard index bundling techniques to export bundling:
 
 ```ts
-export * from "./ComponentA.il8n";
-export * from "./ComponentB.il8n";
+export * from "./ComponentA.i18n";
+export * from "./ComponentB.i18n";
 ```
 
 The final set of bundles can be installed into your `i18n` service:
 
 ```ts
 import i18n from "i18next";
-import * as ComponentsIl8nBundles from "./components/il8n";
-import * as PagesIl8nBundles from "./pages/il8n";
+import * as ComponentsI18nBundles from "./components/i18n";
+import * as PagesI18nBundles from "./pages/i18n";
 
 i18n
   // ...
   .init({
-    resources: addIl8nBundlesToResources(resources, [
-      ...Object.values(ComponentsIl8nBundles),
-      ...Object.values(PagesIl8nBundles),
+    resources: addI18nBundlesToResources(resources, [
+      ...Object.values(ComponentsI18nBundles),
+      ...Object.values(PagesI18nBundles),
     ]),
     // ...
   });

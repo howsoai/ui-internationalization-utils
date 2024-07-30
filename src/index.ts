@@ -1,1 +1,1 @@
-export * from "./Il8nBundle";
+export * from "./I18nBundle";
