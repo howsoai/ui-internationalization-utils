@@ -47,6 +47,7 @@ export const getStringsForI18nBundleFromResource = <T extends ResourceObject>(
  */
 export const addI18nBundlesToResources = (
   resources: Resource,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   bundles: I18nBundle<any, ResourceLanguage>[],
 ): Resource => {
   const newResources = { ...resources };

@@ -8,13 +8,13 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "rollup --config",
-    "lint": "tsc --noEmit && eslint --ext .js,.jsx,.ts,.tsx src/ --color",
+    "lint": "tsc --noEmit && eslint src/ --color",
     "prebuild": "rimraf lib/*",
     "pre-commit": "lint-staged",
     "prepare": "husky install",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "tsc --noEmit && jest --collect-coverage",
+    "test:coverage": "jest --collect-coverage",
     "prepack": "npm run build"
   },
   "publishConfig": {
@@ -38,13 +38,15 @@
     "@rollup/rollup-linux-x64-gnu": "^4.9.6"
   },
   "devDependencies": {
+    "@eslint/js": "^9.8.0",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
+    "@types/eslint__js": "^8.42.3",
     "@types/react": "^18.2.14",
     "@vitejs/plugin-react": "^4.2.1",
-    "eslint": "^8.5.0",
+    "eslint": "^8.57.0",
     "husky": "^7.0.4",
     "jest": "^29.6.1",
     "jest-environment-jsdom": "^29.6.1",
@@ -54,7 +56,8 @@
     "react-i18next": "^14.1.2",
     "rollup": "^4.12.1",
     "ts-jest": "^29.1.1",
-    "typescript": "^5.5.2",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.0.1",
     "vite": "^5.1.6",
     "vite-plugin-eslint": "^1.8.1"
   },
