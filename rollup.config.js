@@ -1,5 +1,5 @@
-import typescript from "@rollup/plugin-typescript";
 import terser from "@rollup/plugin-terser";
+import typescript from "@rollup/plugin-typescript";
 import pkg from "./package.json" with { type: "json" };
 
 /**
@@ -22,7 +22,7 @@ export default {
   ],
   output: [
     {
-      file: "lib/index.cjs.js",
+      file: "lib/index.cjs",
       format: "cjs",
     },
     {
