@@ -11,7 +11,7 @@ To use this package in your application install it via npm.
 Standard package installation makes imports available:
 
 ```bash
-npm i --save-dev @howso/ui-internationalization-utils
+npm i @howso/ui-internationalization-utils
 ```
 
 ### Creating Bundles
@@ -100,8 +100,6 @@ i18n
 ```
 
 ## Publishing
-
-This package is published into a private npm registry.
 
 Documentation changes do not require a version publishing.
 For functional changes, follow [SemVer](https://semver.org/)
