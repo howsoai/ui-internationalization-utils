@@ -6,15 +6,6 @@ A set of functions and types to support our translation efforts.
 
 To use this package in your application install it via npm.
 
-### Prerequisites
-
-Your home directory must contain a `.npmrc` file pointing to the Azure DevOps artifact feed:
-
-```text
-@howso:registry = https://dpbuild.jfrog.io/artifactory/api/npm/npm-virtual/
-//dpbuild.jfrog.io/artifactory/api/npm/npm-virtual/:_auth=...
-```
-
 ### Installation
 
 Standard package installation makes imports available:
